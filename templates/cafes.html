@@ -1,0 +1,41 @@
+<!-- templates/cafes.html -->
+{% extends 'base.html' %}
+{% block title %}All Cafes{% endblock %}
+
+{% block content %}
+<h2>All Cafes</h2>
+<table class="table table-bordered table-hover shadow-sm">
+    <thead class="table-dark">
+        <tr>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Open</th>
+            <th>Close</th>
+            <th>Coffee Rating</th>
+            <th>WiFi Rating</th>
+            <th>Power Rating</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for cafe in cafes %}
+        <tr>
+            <td>{{ cafe.name }}</td>
+            <td><a href="{{ cafe.location }}" target="_blank" class="btn btn-sm btn-info">Maps Link</a></td>
+            <td>{{ cafe.opening_time }}</td>
+            <td>{{ cafe.closing_time }}</td>
+            <td>{{ cafe.coffee_rating }}</td>
+            <td>{{ cafe.wifi_rating }}</td>
+            <td>{{ cafe.power_rating }}</td>
+            <td>
+                <form action="{{ url_for('delete_cafe', cafe_id=cafe.id) }}" method="POST">
+                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{{ url_for('add_cafe') }}" class="btn btn-success mt-3">Add More Cafes</a>
+{% endblock %}
+

@@ -1,0 +1,12 @@
+<!-- templates/index.html -->
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="text-center">
+    <h1>Welcome to Cafe Finder ☕</h1>
+    <p>Find the best cafes with WiFi, power outlets, and great coffee!</p>
+    <a href="{{ url_for('cafes') }}" class="btn btn-primary mt-3">View Cafes</a>
+    <a href="{{ url_for('add_cafe') }}" class="btn btn-success mt-3">Add a Cafe</a>
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+<!-- templates/add.html -->
+{% extends 'base.html' %}
+{% block title %}Add A New Cafe{% endblock %}
+
+{% block content %}
+<div class="card shadow-lg p-4">
+    <h2 class="mb-4">Add a New Cafe</h2>
+    <form method="POST" action="{{ url_for('add_cafe') }}">
+        {{ form.hidden_tag() }}
+        <div class="mb-3">
+            {{ form.cafe.label }} {{ form.cafe(class="form-control") }}
+        </div>
+        <div class="mb-3">
+            {{ form.location.label }} {{ form.location(class="form-control") }}
+        </div>
+        <div class="mb-3">
+            {{ form.opening_time.label }} {{ form.opening_time(class="form-control") }}
+        </div>
+        <div class="mb-3">
+            {{ form.closing_time.label }} {{ form.closing_time(class="form-control") }}
+        </div>
+        <div class="mb-3">
+            {{ form.coffee_rating.label }} {{ form.coffee_rating(class="form-select") }}
+        </div>
+        <div class="mb-3">
+            {{ form.wifi_rating.label }} {{ form.wifi_rating(class="form-select") }}
+        </div>
+        <div class="mb-3">
+            {{ form.power_rating.label }} {{ form.power_rating(class="form-select") }}
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <a href="{{ url_for('cafes') }}" class="btn btn-link mt-3">View All Cafes</a>
+</div>
+{% endblock %}
